@@ -1,0 +1,39 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>In memory razor parser template</title>
+</head>
+<body>
+    
+    <h1>Hello @Model.Name</h1>
+    <p>This could be any string read from a database, blog store or anywhere you can store a string</p>
+    <table>
+        <thead>
+            <tr>
+                <td>#</td>
+                <td>Name</td>
+                <td>Telephone</td>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach(var customer in Model.Customers) {
+            <tr>
+                <td>@customer.ID</td>
+                <td>@customer.Name</td>
+                <td>@customer.Telephone</td>
+            </tr>            
+            }
+        </tbody>
+    </table>
+    
+    @if(Model.IsEnabled) {
+        <p>Flag enabled</p>
+    }
+    else {
+        <p>Flag Disabled</p>
+    }
+
+</body>
+</html>
