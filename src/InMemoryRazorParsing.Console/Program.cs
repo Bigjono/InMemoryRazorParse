@@ -4,7 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using InMemoryRazorParser.Core;
+using InMemoryRazorParsing.Model;
 using InMemoryRazorParsing.Tools;
+ 
 
 namespace InMemoryRazorParsing
 {
@@ -20,7 +22,7 @@ namespace InMemoryRazorParsing
 
 
             Console.Write(parser.Parse(ResourceFilesReader.GetResourceFileContent(typeof(Program), "InMemoryRazorParser.html")));
-            Console.WriteLine();
+            Console.WriteLine("---- Done ----");
 
             Console.ReadLine();
         }
@@ -29,16 +31,14 @@ namespace InMemoryRazorParsing
         // the model can be anything, its dynamic !!! 
         static CustomerContainer GetSampleModel()
         {
-            var retVal = new CustomerContainer();
-
-            retVal.Name = "Mr Smith";
-            retVal.IsEnabled = true;
+            var retVal = new CustomerContainer {Name = "Mr Smith", IsEnabled = true};
 
             retVal.Customers.Add(new Customer() { ID = 1, Name = "Bruce Wayne", Telephone = "0800 BATMAN" });
             retVal.Customers.Add(new Customer() { ID = 2, Name = "Bruce Banner", Telephone = "0800 HULK" });
             retVal.Customers.Add(new Customer() { ID = 3, Name = "Clark Kent", Telephone = "0800 SUPERMAN" });
             retVal.Customers.Add(new Customer() { ID = 4, Name = "Tony Stark", Telephone = "0800 IRONMAN" });
             retVal.Customers.Add(new Customer() { ID = 5, Name = "Eric Wimp", Telephone = "0800 BANNA MAN" });
+     
 
 
             return retVal;

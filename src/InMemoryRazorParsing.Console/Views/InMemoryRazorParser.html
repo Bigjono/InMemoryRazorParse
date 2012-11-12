@@ -1,5 +1,9 @@
-﻿<!DOCTYPE html>
-
+﻿@using System.Collections.ObjectModel
+@using InMemoryRazorParsing.Model
+<!DOCTYPE html>
+@{
+    Collection<Customer> customerList = Model.Customers;
+}
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="utf-8" />
@@ -9,6 +13,8 @@
     
     <h1>Hello @Model.Name</h1>
     <p>This could be any string read from a database, blog store or anywhere you can store a string</p>
+ 
+
     <table>
         <thead>
             <tr>
@@ -18,7 +24,7 @@
             </tr>
         </thead>
         <tbody>
-            @foreach(var customer in Model.Customers) {
+            @foreach(var customer in customerList.OrderByDescending(x=>x.Name)) {
             <tr>
                 <td>@customer.ID</td>
                 <td>@customer.Name</td>
